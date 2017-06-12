@@ -1,2 +1,4 @@
 name: Christian Johnson Homepage
 markdown: kramdown
+
+theme: jekyll-theme-slate
