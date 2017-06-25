@@ -6,7 +6,7 @@ date: 2017-07-01
 
 I have long subscribed to the belief that the worst thing about Donald Trump isn't his policies or his character- it's that he was able to get the support of enough Americans to win the Republican nomination, and ultimately the Presidency.
 On some level, I have to make peace with the fact that regardless of whether or not voters were influenced by Russian propaganda or Comey's October Surprise, they still made a conscious choice to vote for Trump. 
-However, the new revelations imply that the Russians didn't just attempt to influence voters, but to manipulate voter registrations or even alter votes after they were cast.
+However, a handful of recent revelations imply that the Russians didn't just attempt to influence voters, but to manipulate voter registrations or even alter votes after they were cast.
 Is it possible that America voted against Trump, but the election was stolen?
 
 On June 6 2017, NSA contractor [Reality Winner](https://www.theatlantic.com/news/archive/2017/06/who-is-reality-winner/529266/) was arrested on suspicion of leaking a top-secret document to The Intercept.
