@@ -42,7 +42,7 @@ Finding county-level election results is a bit trickier, but luckily I found tha
 All of the data that I used are available on the [GitHub page](http://github.com/christian-johnson/election-neural-net) for this project, under the folder "data_spreadsheets".
 Unfortunately, county-level voting information is not available for Alaska, so this analysis is only applicable to the other 49 states.
 
-Once the data is loaded into a nice format (which takes a bit of work), we can create a neural net using the open-source package Scikit-learn. This makes things very easy- the essential code is only a few lines:
+Once the data is loaded into a nice format (which takes a bit of work), we can create a neural net using a Python class called [MLPRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor) from the open-source package [Scikit-learn](http://scikit-learn.org/stable/index.html). This makes things very easy- the essential code is only a few lines:
 
 {% highlight python %}
 from sklearn.neural_network import MLPRegressor as mlp
