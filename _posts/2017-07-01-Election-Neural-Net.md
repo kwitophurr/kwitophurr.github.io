@@ -26,15 +26,18 @@ And a few tens of thousands of votes could be all you need to swing a state one 
 Of course, this assumption could be wrong- perhaps Putin was more brazen than I'm guessing and he decided to swing for the fences (as the media reports suggest) and attack election systems nationwide.
 Or maybe his goal wasn't actually to swing the election one way or another, but simply to cause mass distrust of our democratic systems.
 In either case, he wouldn't have localized his vote tampering to a handful of places, and it would be difficult to detect in the way I'll describe here.
-The good news is, as it turns out, we can still learn interesting things from this analysis whether the assumptions we are making are true or false.
 
-To recap: we're going to make an educated guess that the places most likely to be a target for vote tampering are counties that contain large-ish cities, in swing states. The big question still remains- how would we know if the votes counts in those counties are valid or not? What we would need is an accurate, county-by-county prediction of how that county is likely to vote, which we can then compare to the actual voting returns. To do this, we'll turn to machine learning.
+As it turns out, we will still learn interesting things from this analysis whether this assumption we are making is true or false.
+
+To recap: we're going to make an educated guess that the places most likely to be a target for vote tampering are the handful of counties that contain large-ish cities, in swing states. But the big question still remains- how would we know if the votes counts in those counties are valid or not? What we need is an accurate, county-by-county prediction of how that county is likely to vote, which we can then compare to the actual voting returns. To do this, we'll turn to machine learning.
 
 ## Crunching numbers with neural nets
 There's been a lot of buzz in recent months about what so-called "deep learning" can do in fields like image classification and voice recognition.
-For this analysis, however, we don't need anything particularly fancy- a good old-fashioned neural net will do just fine.
-For the inputs we can provide it with readily-available demographic information, things like median income, population density, and ethnicity proportions.
-I downloaded a bunch of data from the St. Louis Federal Reserve website, which has a very convenient interface for getting county-level data.
+For this analysis, however, we don't need anything particularly fancy; a good old-fashioned neural net will do just fine.
+For the inputs we will provide it with readily-available demographic information- things like median income, population density, and how that county voted in years past.
+And to train it, we can just use the actual results of the election.
+I downloaded a bunch of data from the St. Louis Federal Reserve [website](http://geofred.stlouisfed.org/map/), which has a very convenient interface for getting county-level data.
+Finding county-level election results is a bit trickier, but luckily I found that GitHub user XXX had already compiled the data into a nice spreadsheet.
 The spreadsheets are all available on the GitHub page for this project, under the folder "data_spreadsheets".
 Unfortunately, county-level voting information is not available for Alaska, so this analysis is only applicable to the other 49 states.
 
@@ -49,5 +52,4 @@ results = nn.predict(test_inputs)
 
 Here I've broken up the data into two pieces: "training" and "test". If I have a hunch that Florida's votes have been hacked, then the Florida counties are my "test" data, and the rest of the country is my "training" data. Of course, the proof is in the pudding- how well does this neural net actually work? It turns out to be very accurate- see, for example, the actual and predicted vote counts in Pennsylvania:
 
-At this point, you would be forgiven for not wanting to read yet another article about the the Trump-Russia affair.
-But in recent days a few things have come to light, revealing that the scope of Putin's campaign of interference was even broader than previously thought.
+TL;DR: [Betteridges Law of Headlines](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines)
