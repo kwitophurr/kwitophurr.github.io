@@ -26,7 +26,7 @@ And a few tens of thousands of votes could be all you need to swing a state one 
 Of course, this assumption could be wrong- perhaps Putin was more brazen than I'm guessing and he decided to swing for the fences (as the media reports suggest) and attack election systems nationwide.
 Or maybe his goal wasn't actually to swing the election one way or another, but simply to cause mass distrust of our democratic systems.
 In either case, he wouldn't have localized his vote tampering to a handful of places, and it would be difficult to detect in the way I'll describe here.
-The good news is that, as it turns out, we can still learn interesting things from this analysis whether the assumptions we are making are true or false.
+The good news is, as it turns out, we can still learn interesting things from this analysis whether the assumptions we are making are true or false.
 
 To recap: we're going to make an educated guess that the places most likely to be a target for vote tampering are counties that contain large-ish cities, in swing states. The big question still remains- how would we know if the votes counts in those counties are valid or not? What we would need is an accurate, county-by-county prediction of how that county is likely to vote, which we can then compare to the actual voting returns. To do this, we'll turn to machine learning.
 
