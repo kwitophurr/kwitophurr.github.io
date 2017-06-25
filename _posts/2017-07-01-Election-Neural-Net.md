@@ -3,10 +3,9 @@ layout: post
 title: "Were Votes in the 2016 Election Hacked?"
 date: 2017-07-01
 ---
-At this point, you would be forgiven for not wanting to read yet another article about the the Trump-Russia affair.
-But in recent days a few things have come to light, revealing that the scope of Putin's campaign of interference was even broader than previously thought.
+
 I have long subscribed to the belief that the worst thing about Donald Trump isn't his policies or his character- it's that he was able to get the support of enough Americans to win the Republican nomination, and ultimately the Presidency.
-On some level, I have to make peace with the fact that regardless of whether or not voters were influenced by Russian propaganda, they still made a conscious choice to vote for Trump. 
+On some level, I have to make peace with the fact that regardless of whether or not voters were influenced by Russian propaganda or Comey's October Surprise, they still made a conscious choice to vote for Trump. 
 However, the new revelations imply that the Russians didn't just attempt to influence voters, but to manipulate voter registrations or even alter votes after they were cast.
 Is it possible that America voted against Trump, but the election was stolen?
 
@@ -50,3 +49,5 @@ results = nn.predict(test_inputs)
 
 Here I've broken up the data into two pieces: "training" and "test". If I have a hunch that Florida's votes have been hacked, then the Florida counties are my "test" data, and the rest of the country is my "training" data. Of course, the proof is in the pudding- how well does this neural net actually work? It turns out to be very accurate- see, for example, the actual and predicted vote counts in Pennsylvania:
 
+At this point, you would be forgiven for not wanting to read yet another article about the the Trump-Russia affair.
+But in recent days a few things have come to light, revealing that the scope of Putin's campaign of interference was even broader than previously thought.
