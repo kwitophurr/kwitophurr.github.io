@@ -51,6 +51,8 @@ nn.fit(training_inputs, training_outputs)
 results = nn.predict(test_inputs)
 {% endhighlight %}
 
-Here I've broken up the data into two pieces: "training" and "test". If I have a hunch that Florida's votes have been hacked, then the Florida counties are my "test" data, and the rest of the country is my "training" data. Of course, the proof is in the pudding- how well does this neural net actually work? It turns out to be very accurate- see, for example, the actual and predicted vote counts in Pennsylvania:
+Here I've broken up the data into two pieces: "training" and "test". If I have a hunch that Florida's votes have been hacked, then the Florida counties are my "test" data, and the rest of the country is my "training" data. Of course, the proof is in the pudding- how well does this neural net actually work? It turns out to work pretty well- see, for example, the actual and predicted vote counts in Pennsylvania:
+
+The obvious thing to do next is to look at deviations in the data from the prediction, and see if any counties have a large excess of Trump votes. But this can be tricky to interpret on its own, because random fluctuations in small counties can be pronounced. What we actually want is a measure of the significance of a given deviation. I calculated
 
 TL;DR: [Betteridges Law of Headlines](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines)
