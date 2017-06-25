@@ -4,8 +4,11 @@ title: "Were Votes in the 2016 Election Hacked?"
 date: 2017-07-01
 ---
 At this point, you would be forgiven for not wanting to read yet another article about the the Trump-Russia affair.
-But in recent days a few things have come to light, revealing that the scope of Putin's campaign of interference was even broader than previously thought. The new revelations are especially troubling because they imply that the Russians didn't just try to influence votes through a sophisticated propaganda machine, but that the very results of the election are in question.
-So what are the new revelations?
+But in recent days a few things have come to light, revealing that the scope of Putin's campaign of interference was even broader than previously thought.
+I have long subscribed to the belief that the worst thing about Donald Trump isn't his policies or his character- it's that he was able to get the support of enough Americans to win the Republican nomination, and ultimately the Presidency.
+On some level, I have to make peace with the fact that regardless of whether or not voters were influenced by Russian propaganda, they still made a conscious choice to vote for Trump. 
+However, the new revelations imply that the Russians didn't just attempt to influence voters, but to manipulate voter registrations or even alter votes after they were cast.
+Is it possible that America voted against Trump, but the election was stolen?
 
 On June 6 2017, NSA contractor [Reality Winner](https://www.theatlantic.com/news/archive/2017/06/who-is-reality-winner/529266/) was arrested on suspicion of leaking a top-secret document to The Intercept.
 The document [alleges](https://theintercept.com/2017/06/05/top-secret-nsa-report-details-russian-hacking-effort-days-before-2016-election/) that Russia attempted to spear-phish up to 100 local election officials in up to seven states, with the intention of gaining access to their computer systems.
