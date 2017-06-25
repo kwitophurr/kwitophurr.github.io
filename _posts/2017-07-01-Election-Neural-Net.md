@@ -39,7 +39,7 @@ And to train it, we can just use the actual results of the election.
 
 I downloaded a bunch of data from the St. Louis Federal Reserve [website](http://geofred.stlouisfed.org/map/), which has a very convenient interface for getting county-level data.
 Finding county-level election results is a bit trickier, but luckily I found that GitHub user [tonmcg](https://github.com/tonmcg/County_Level_Election_Results_12-16) had already compiled the data into a nice spreadsheet.
-The spreadsheets are all available on the GitHub page for this project, under the folder "data_spreadsheets".
+All of the data that I used are available on the [GitHub page](http://github.com/christian-johnson/election-neural-net) for this project, under the folder "data_spreadsheets".
 Unfortunately, county-level voting information is not available for Alaska, so this analysis is only applicable to the other 49 states.
 
 Once the data is loaded into a nice format (which takes a bit of work), we can create a neural net using the open-source package Scikit-learn. This makes things very easy- the essential code is only a few lines:
