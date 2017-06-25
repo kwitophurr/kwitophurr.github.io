@@ -3,7 +3,6 @@ layout: post
 title: "Were Votes in the 2016 Election Hacked?"
 date: 2017-07-01
 ---
-# Were Vote Counts in the 2016 US Presidential Election Hacked?
 At this point, you would be forgiven for not wanting to read yet another article about the the Trump-Russia affair.
 But in recent days a few things have come to light, revealing that the scope of Putin's campaign of interference was even broader than previously thought. The new revelations are especially troubling because they imply that the Russians didn't just try to influence votes through a sophisticated propaganda machine, but that the very results of the election are in question.
 So what are the new revelations?
