@@ -36,8 +36,9 @@ There's been a lot of buzz in recent months about what so-called "deep learning"
 For this analysis, however, we don't need anything particularly fancy; a good old-fashioned neural net will do just fine.
 For the inputs we will provide it with readily-available demographic information- things like median income, population density, and how that county voted in years past.
 And to train it, we can just use the actual results of the election.
+
 I downloaded a bunch of data from the St. Louis Federal Reserve [website](http://geofred.stlouisfed.org/map/), which has a very convenient interface for getting county-level data.
-Finding county-level election results is a bit trickier, but luckily I found that GitHub user XXX had already compiled the data into a nice spreadsheet.
+Finding county-level election results is a bit trickier, but luckily I found that GitHub user [tonmcg](https://github.com/tonmcg/County_Level_Election_Results_12-16) had already compiled the data into a nice spreadsheet.
 The spreadsheets are all available on the GitHub page for this project, under the folder "data_spreadsheets".
 Unfortunately, county-level voting information is not available for Alaska, so this analysis is only applicable to the other 49 states.
 
