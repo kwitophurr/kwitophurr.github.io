@@ -46,7 +46,7 @@ A couple of quick notes about the data used here:
 1. For some reason, county-level voting information is not available for Alaska, so this analysis is only applicable to the other 49 states. 
 2. Election results are somewhat complicated due to the presence of third-party candidates. I'm just going to ignore third parties, so everywhere I reference a vote fraction, that's calculated as percentage of the two main vote shares. For example, the vote margin in Figure 1 below is found by: (GOP-DEM)/(GOP+DEM)
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_results.jpg?raw=true" description="Figure 1: 2016 US Presidential Election Results. The colors in the image are scaled such that a county that voted 50-50 would appear white, while counties that voted in favor of Trump or Hillary are colored in red or blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_results.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_results.jpg" description="Figure 1: 2016 US Presidential Election Results. The colors in the image are scaled such that a county that voted 50-50 would appear white, while counties that voted in favor of Trump or Hillary are colored in red or blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_results.tiff?raw=true" %}
 
 Once all the data is loaded into a nice format (which takes a bit of work- that's the purpose of the function *load_data.py*), we can create a neural net using a Python class called [MLPRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor) from the open-source package [Scikit-learn](http://scikit-learn.org/stable/index.html). This makes things very easy- the essential code is only a few lines:
 
@@ -61,7 +61,7 @@ Then we can compare the output of the neural net to the real data and look for d
 Of course, the proof is in the pudding- how well does this neural net actually work?
 It turns out be pretty good- see, for example, the actual and predicted vote counts in Florida:
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_data_model_FL.jpg?raw=true" description="Figure 2: Actual election results for Florida on the left, and the predicted results on the right. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_data_model_FL.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_data_model_FL.jpg" description="Figure 2: Actual election results for Florida on the left, and the predicted results on the right. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_data_model_FL.tiff?raw=true" %}
 
 The obvious thing to do next is to look at deviations in the data from the prediction (i.e. a simple residual), and see if any counties have a large excess of Trump votes.
 But this can be tricky to interpret on its own, because random fluctuations in small counties can be pronounced. What we actually want is a measure of the significance of a given deviation.
@@ -71,7 +71,7 @@ That would give us the expected uncertainty, and we could plot the significance 
 Of course, we can't hold a do-over election, so I estimated the uncertainty in the prediction for county X by looking at how well the neural net predicts the results in the twenty counties most similar to X. Then I can plot the significances, and we can interpret them in a quasi-rigorous way (e.g. county X is 3 standard deviations from the mean). In Figure 2, I show this type of analysis for Florida- the residuals are on the left and
 (Data-Model)/Uncertainty is shown on the right. 
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_residuals_FL.jpg?raw=true" description="Figure 3: Residual vote percent on the left, and the number of standard deviations of those residuals on the right. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_residuals_FL.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_residuals_FL.jpg" description="Figure 3: Residual vote percent on the left, and the number of standard deviations of those residuals on the right. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_residuals_FL.tiff?raw=true" %}
 
 
 TL;DR: [Betteridges Law of Headlines](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines)
