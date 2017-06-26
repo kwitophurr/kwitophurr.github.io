@@ -61,6 +61,7 @@ Then we can compare the output of the neural net to the real data and look for d
 Of course, the proof is in the pudding- how well does this neural net actually work?
 It turns out be pretty good- see, for example, the actual and predicted vote counts in Florida:
 
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_data_model_FL.jpg?raw=true" description="Figure 2: Actual election results for Florida on the left, and the predicted results on the right. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_data_model_FL.tiff?raw=true" %}
 
 The obvious thing to do next is to look at deviations in the data from the prediction (i.e. a simple residual), and see if any counties have a large excess of Trump votes.
 But this can be tricky to interpret on its own, because random fluctuations in small counties can be pronounced. What we actually want is a measure of the significance of a given deviation.
@@ -69,5 +70,8 @@ That would give us the expected uncertainty, and we could plot the significance 
 
 Of course, we can't hold a do-over election, so I estimated the uncertainty in the prediction for county X by looking at how well the neural net predicts the results in the twenty counties most similar to X. Then I can plot the significances, and we can interpret them in a quasi-rigorous way (e.g. county X is 3 standard deviations from the mean). In Figure 2, I show this type of analysis for Florida- the residuals are on the left and
 (Data-Model)/Uncertainty is shown on the right. 
+
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_residuals_FL.jpg?raw=true" description="Figure 3: Residual vote percent on the left, and the number of standard deviations of those residuals on the right. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_residuals_FL.tiff?raw=true" %}
+
 
 TL;DR: [Betteridges Law of Headlines](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines)
