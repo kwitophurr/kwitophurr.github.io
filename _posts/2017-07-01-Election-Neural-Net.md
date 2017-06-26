@@ -40,9 +40,16 @@ And to train it, we can just use the actual results of the election.
 I downloaded a bunch of data from the St. Louis Federal Reserve [website](http://geofred.stlouisfed.org/map/), which has a very convenient interface for getting county-level data.
 Finding county-level election results is a bit trickier, but luckily I found that GitHub user [tonmcg](https://github.com/tonmcg/County_Level_Election_Results_12-16) had already compiled the data into a nice spreadsheet.
 All of the data that I used are available on the [GitHub page](http://github.com/christian-johnson/election-neural-net) for this project, under the folder "data_spreadsheets".
-Unfortunately, county-level voting information is not available for Alaska, so this analysis is only applicable to the other 49 states.
 
-Once the data is loaded into a nice format (which takes a bit of work), we can create a neural net using a Python class called [MLPRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor) from the open-source package [Scikit-learn](http://scikit-learn.org/stable/index.html). This makes things very easy- the essential code is only a few lines:
+A couple of quick notes about the data used here:
+* For some reason, county-level voting information is not available for Alaska, so this analysis is only applicable to the other 49 states. 
+* Election results are somewhat complicated due to the presence of third-party candidates. I'm just going to ignore third parties, so everywhere I reference a vote fraction, that's calculated as percentage of the two main vote shares. For example, the vote margin in Figure 1 below is found by: (GOP-DEM)/(GOP+DEM)
+
+Figure 1:
+![alt text][logo]
+[logo]: https://github.io/christian-johnson/election-neural-net/images/election_results.tiff?raw=true "2016 US Presidential Election Results"
+
+Once the data is loaded into a nice format (which takes a bit of work- that's the purpose of the function *load_data.py*), we can create a neural net using a Python class called [MLPRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor) from the open-source package [Scikit-learn](http://scikit-learn.org/stable/index.html). This makes things very easy- the essential code is only a few lines:
 
 {% highlight python %}
 from sklearn.neural_network import MLPRegressor as mlp
