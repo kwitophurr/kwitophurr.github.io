@@ -45,16 +45,14 @@ A couple of quick notes about the data used here:
 * For some reason, county-level voting information is not available for Alaska, so this analysis is only applicable to the other 49 states. 
 * Election results are somewhat complicated due to the presence of third-party candidates. I'm just going to ignore third parties, so everywhere I reference a vote fraction, that's calculated as percentage of the two main vote shares. For example, the vote margin in Figure 1 below is found by: (GOP-DEM)/(GOP+DEM)
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_results.jpg?raw=true" description="Figure 1: 2016 US Presidential Election Results. Click on the image for a high-resolution version" highres="https://christian-johnson.github.io/election-neural-net/plots/election_results.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_results.jpg?raw=true" description="Figure 1: 2016 US Presidential Election Results. The colors in the image are scaled such that a county that voted 50-50 would appear white, while counties that voted in favor of Trump or Hillary are colored in red or blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_results.tiff?raw=true" %}
 
 Once the data is loaded into a nice format (which takes a bit of work- that's the purpose of the function *load_data.py*), we can create a neural net using a Python class called [MLPRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor) from the open-source package [Scikit-learn](http://scikit-learn.org/stable/index.html). This makes things very easy- the essential code is only a few lines:
 
-{% highlight python %}
-from sklearn.neural_network import MLPRegressor as mlp
-nn = mlp(verbose=True)
-nn.fit(training_inputs, training_outputs)
-results = nn.predict(test_inputs)
-{% endhighlight %}
+	from sklearn.neural_network import MLPRegressor as mlp
+	nn = mlp(verbose=True)
+	nn.fit(training_inputs, training_outputs)
+	results = nn.predict(test_inputs)
 
 Here I've broken up the data into two pieces: "training" and "test". If I have a hunch that Florida's votes have been hacked, then the Florida counties are my "test" data, and the rest of the country is my "training" data. Of course, the proof is in the pudding- how well does this neural net actually work? It turns out to work pretty well- see, for example, the actual and predicted vote counts in Pennsylvania:
 
