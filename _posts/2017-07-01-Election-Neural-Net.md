@@ -46,7 +46,7 @@ A couple of quick notes about the data used here:
 * Election results are somewhat complicated due to the presence of third-party candidates. I'm just going to ignore third parties, so everywhere I reference a vote fraction, that's calculated as percentage of the two main vote shares. For example, the vote margin in Figure 1 below is found by: (GOP-DEM)/(GOP+DEM)
 
 Figure 1:
-![Election Results]: https://christian-johnson.github.io/election-neural-net/plots/election_results.jpg?raw=true "2016 US Presidential Election Results"
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_results.jpg?raw=true" description="2016 US Presidential Election Results" %}
 
 Once the data is loaded into a nice format (which takes a bit of work- that's the purpose of the function *load_data.py*), we can create a neural net using a Python class called [MLPRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor) from the open-source package [Scikit-learn](http://scikit-learn.org/stable/index.html). This makes things very easy- the essential code is only a few lines:
 
