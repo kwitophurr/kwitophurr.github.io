@@ -1,4 +1,5 @@
 name: Christian Johnson Homepage
 permalink: /blog/:year/:month/:day/:title
 markdown: kramdown
-extensions: [fenced_code_blocks]
+kramdown:
+  input: GFM
