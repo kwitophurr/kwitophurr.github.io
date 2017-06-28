@@ -1,2 +1,4 @@
 name: Christian Johnson Homepage
 permalink: /blog/:year/:month/:day/:title
+markdown: redcarpet
+extensions: [fenced_code_blocks]
