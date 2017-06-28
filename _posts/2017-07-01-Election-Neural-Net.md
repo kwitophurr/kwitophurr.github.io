@@ -55,7 +55,7 @@ A couple of quick notes about the data used here:
 
 6. Election results are somewhat complicated due to the presence of third-party candidates. I just ignored third parties, so everywhere I use a vote fraction, that's calculated as percentage of the two main vote shares. For example, the vote margin in Figure 1 below is found by: (GOP-DEM)/(GOP+DEM). Turnout is calculated as (GOP+DEM)/eligible voters.
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_results.jpg" description="Figure 1: 2016 US Presidential Election Results. The colors in the image are scaled such that a county that voted 50-50 would appear white, while counties that voted in favor of Trump or Hillary are colored in red or blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_results.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/National_vote_fraction.jpg" description="Figure 1: 2016 US Presidential Election Results. The colors in the image are scaled such that a county that voted 50-50 would appear white, while counties that voted in favor of Trump or Hillary are colored in red or blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/National_vote_fraction.tiff?raw=true" %}
 
 Once all the data is loaded into a nice format (which takes a bit of work- that's the purpose of the function [load_data.py](http://githu.com/christian_johnson/election-neural-net/load_data.py)), we can create a neural net using a Python class called [MLPRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor) from the open-source package [Scikit-learn](http://scikit-learn.org/stable/index.html). This makes things very easy- the essential code is only a few lines:
 
@@ -103,11 +103,11 @@ This isn't a perfect definition because there are some groups (e.g. convicted fe
 
 The voting turnout nationwide looks like this:
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.jpg" description="Figure 4:   Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.jpg" description="Figure 4: Voter turnout. Turnout doesn't vary as much county-to-county as does political leaning, but there are still some trends that you can identify. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.tiff?raw=true" %}
 
 Again, we can predict the turnout in the same state-by-state manner as we predicted the vote share, and the residuals are plotted below:
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.jpg" description="Figure 5: National voter turnout residuals. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.jpg" description="Figure 5: National voter turnout residuals. The color is scaled such that counties that had a lower turnout than expected are brown/orange, while higher-than-expected turnout is colored in purple (Not using the red-blue color scheme here because turnout doesn't necessarily correlate with political party). Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.tiff?raw=true" %}
 
 The results show a couple things that make sense in hindsight- for starteres, it appears that a lot of Mormons in Utah decided to sit the election out rather than vote for someone they didn't like. 
 Swing states like Florida, North Carolina, Maine, and Colorado had unexpectedly high turnouts, while safe states like New York and West Virginia had a bit less turnout than expected.
