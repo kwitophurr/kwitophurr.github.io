@@ -45,11 +45,15 @@ All of the data that I used are available on the [GitHub page](http://github.com
 A couple of quick notes about the data used here:
 
 1. There are 24 different data points on each county- the exact data series I used are availabe at the end of this post. The most notable absence is religious affiliation, which wasn't available from the Federal Reserve site (if you know a good resource for where to find this information, feel free to drop me an email). This has a strong impact later in Utah, as we'll see. 
+
 2. For some reason, county-level voting returns are not available for Alaska, so this analysis is only applicable to the other 49 states. 
 
 3. For a handful of counties in South Dakota (Perkins, Roberts, Pennington, and Sanborn), the data from the Federal Reserve seems to have wild inconsistencies between 2009 and 2010, with each experiencing dramatic jumps in population. Since this seems to be a problem with the data and not the analysis, I excluded these counties by hand as well. I contacted the Federal Reserve, and have been informed that they are looking into the issue.
+
 4. Polk County, TX had incorrect results in tonmcg's data- I replaced it with the data from the [Texas Secretary of State's data](http://elections.sos.state.tx.us/elchist319_race62.htm) instead. As far as I could tell, the rest of the results in Texas were consistent to within a few votes.
+
 5. When running the neural net, I also excluded counties that are missing any data points for one reason or another. This affects another handful of counties, but hopefully doesn't have too big an impact on the results.
+
 6. Election results are somewhat complicated due to the presence of third-party candidates. I just ignore third parties, so everywhere I use a vote fraction, that's calculated as percentage of the two main vote shares. For example, the vote margin in Figure 1 below is found by: (GOP-DEM)/(GOP+DEM)
 
 {% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_results.jpg" description="Figure 1: 2016 US Presidential Election Results. The colors in the image are scaled such that a county that voted 50-50 would appear white, while counties that voted in favor of Trump or Hillary are colored in red or blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_results.tiff?raw=true" %}
@@ -114,28 +118,52 @@ Until then, we know that if the Russians did alter the results of the election, 
 The data points used in training the neural net are (in no particular order):
 
 1. Population density (people per square mile)
+
 2. Percent of people who voted GOP in 2012
+
 3. Percent Black, 2009
+
 4. Percent Black, 2015
+
 5. Percent White, 2009
+
 6. Percent White, 2015
+
 7. Percent Asian, 2009
+
 8. Percent Asian, 2015
+
 9. Percent Hispanic, 2009
+
 10. Percent Hispanic, 2015
+
 11. Percent Native American, 2009
+
 12. Percent Native American, 2015
+
 13. Percent of people on food stamps, 2013
+
 14. Percent of people on food stamps, 2008
+
 15. Average commute time, 2015
+
 16. Unemployment rate, October 2016
+
 17. Unemployment rate, October 2007
+
 18. Percent of people with a Bachelor's degree, 2012
+
 19. Median age, 2015
+
 20. Median age, 2009
+
 21. Percent of people who are rent-burdened, 2015
+
 22. Homeownership rate, 2015
+
 23. Income inequality index, 2015
+
 24. Population 18+ in age
+
 25. Fraction of 18+ people who voted in 2012
 
