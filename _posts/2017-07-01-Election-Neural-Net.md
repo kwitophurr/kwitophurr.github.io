@@ -66,7 +66,7 @@ If I have a hunch that Florida's votes have been hacked, then the Florida counti
 Then we can compare the output of the neural net to the real data and look for discrepancies.
 Of course, the proof is in the pudding- how well does this neural net actually work?
 
-##Results
+## Results
 The neural net turns out be pretty good- see, for example, the actual and predicted vote counts in Florida:
 
 {% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_data_model_FL.jpg" description="Figure 2: Actual election results for Florida on the left, and the predicted results on the right. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_data_model_FL.tiff?raw=true" %}
@@ -84,7 +84,7 @@ I want to take a minute to emphasize that the model here is not a _prediction_ i
 
 On the other hand, a large deviation in a given state is a sign that there might be something that wasn't taken into account.For instance, Utah and northern Arizona voted signficantly less for Trump than was expected- I suspect this is because those areas have high Mormon populations. You might also see Vermont and Arkansas are generally blue- my guess is this is because Bernie Sanders' endorsement of Hillary had a strong influence on his constituents in Vermont, and Hillary was viewed more favorably by some in Arkansas because of her time spent there as First Lady. Likewise, the New York metropolitan area (at least outside of the city) voted more strongly for Trump than expected, which have something to do with the fact that he is a native of that area.
 
-##What if vote machines weren't hacked, but voter registrations were?
+## What if vote machines weren't hacked, but voter registrations were?
 So far, I've only looked at half the story- what if no votes were changed, but voter registrations were tampered with?
 If enough people were prevented from voting in the right areas, that would be enough to change the results, while remaining invisible to the analysis presented above. 
 To investigate this, I ran the analysis again, but this time I looked at voting turnout, which I calculated as the number of votes, divided by the number of people aged 18+.
@@ -107,7 +107,7 @@ If you'd like to add some data series or adjust the fitting procedure, the code 
 I'm going to keep playing around with this data and add blog posts whenever I find something interesting.
 Until then, we know that if the Russians did alter the results of the election, they were at least somewhat subtle about it.
 
-##TL;DR: [Betteridges Law of Headlines](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines)
+## TL;DR: [Betteridges Law of Headlines](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines)
 
 
 ## Appendix: Data series used
