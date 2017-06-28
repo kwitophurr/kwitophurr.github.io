@@ -92,11 +92,11 @@ This isn't a perfect definition because there are some groups (e.g. convicted fe
 
 The voting turnout nationwide looks like this:
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.jpg" description="Figure 4:   Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/national_residmap.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.jpg" description="Figure 4:   Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.tiff?raw=true" %}
 
 Again, we can predict the turnout in the same state-by-state manner as we predicted the vote share, and the residuals are plotted below:
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/national_residmap.jpg" description="Figure 5: National voter turnout residuals. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/national_residmap.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.jpg" description="Figure 5: National voter turnout residuals. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.tiff?raw=true" %}
 
 The results show a couple things that make sense in hindsight- for starteres, it appears that a lot of Mormons in Utah decided to sit the election out rather than vote for someone they didn't like. 
 Swing states like Florida, North Carolina, and Colorado had unexpectedly high turnouts, while safe states like New York and West Virginia had a bit less turnout than expected.
