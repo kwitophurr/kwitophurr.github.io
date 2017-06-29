@@ -34,5 +34,5 @@ plugins:
 
 # Options
 custom_header: false
-custom_nav_footer: false
-reverse: false
+custom_nav_footer: true
+reverse: true
