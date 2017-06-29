@@ -1,7 +1,7 @@
 # Site settings
-title: Emerald | A simple Jekyll blog
-description: "A minimal blog template, build with Jekyll."
-url: "http://www.jacoporabolini.com/emerald"
+title: Homepage of Christian Johnson
+description: "Christian Johnson's homepage & blog"
+url: "http://christian-johnson.github.io"
 author:
   name: "Christian Johnson"
   email: "arcjohns@ucsc.edu"
