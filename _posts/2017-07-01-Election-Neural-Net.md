@@ -60,8 +60,14 @@ A couple of quick notes about the data used here:
 Once all the data is loaded into a nice format (which takes a bit of work- that's the purpose of the function [load_data.py](https://github.com/christian-johnson/election-neural-net/blob/master/load_data.py)), we can create a neural net using a Python class called [MLPRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor) from the open-source package [Scikit-learn](http://scikit-learn.org/stable/index.html). This makes things very easy- the essential code is only a few lines:
 
 ```from sklearn.neural_network import MLPRegressor as mlp
+
+
 nn = mlp(verbose=True)
+
+
 nn.fit(training_inputs, training_outputs)
+
+
 results = nn.predict(test_inputs)```
 
 Here I've broken up the data into two pieces: "training" and "test".
