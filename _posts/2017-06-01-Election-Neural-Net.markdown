@@ -52,7 +52,7 @@ All of the data that I used are available on the [GitHub page](http://github.com
 
 A couple of quick notes about the data:
 
-1. There are 25 different data points on each county- the exact data points I used are listed at the end of this post. 
+1. There are 36 different data points on each county- the exact data points I used are listed at the end of this post. 
 
 2. As best I could tell, only precinct-level (not county-level) voting returns are available for Alaska, so I applied the analysis only to the other 49 states. 
 
@@ -157,54 +157,39 @@ Until then, we know that if the Russians did alter the results of the election, 
 
 ## Appendix: Data series used
 The data points used in training the neural net are (in no particular order):
-
-1. Population density (people per square mile)
-
-2. Percent of people who voted GOP in 2012
-
-3. Percent Black, 2009
-
-4. Percent Black, 2015
-
-5. Percent White, 2009
-
-6. Percent White, 2015
-
-7. Percent Asian, 2009
-
+1. Vote results from 2012
+2. Voting Turnout in 2012
+3. Population, 2016
+4. Population, 2009
+5. Percent White, 2015
+6. Percent Black, 2015
+7. Percent Hispanic, 2015
 8. Percent Asian, 2015
-
-9. Percent Hispanic, 2009
-
-10. Percent Hispanic, 2015
-
-11. Percent Native American, 2009
-
-12. Percent Native American, 2015
-
-13. Percent of people on food stamps, 2013
-
-14. Percent of people on food stamps, 2008
-
-15. Average commute time, 2015
-
-16. Unemployment rate, October 2016
-
-17. Unemployment rate, October 2007
-
-18. Percent of people with a Bachelor's degree, 2012
-
-19. Median age, 2015
-
-20. Median age, 2009
-
-21. Percent of people who are rent-burdened, 2015
-
-22. Homeownership rate, 2015
-
-23. Income inequality index, 2015
-
-24. Population 18+ in age
-
-25. Fraction of 18+ people who voted in 2012
-
+9. Percent Indian, 2015
+10. Percent Age 0-18, 2015
+11. Percent White, 2009
+12. Percent Black, 2009
+13. Percent Hispanic, 2009
+14. Percent Asian, 2009
+15. Percent Indian, 2009
+16. Percent Age 0-18, 2009
+17. Unemployment Rate, 2016
+18. Unemployment Rate, 2007
+19. Unemployment Rate, 2004
+20. MedianAge',
+21. Percent with Bachelors Degrees
+22. Commute Time
+23. Number of People on Food Stamps
+24. Homeownership Rate
+25. Income Inequality Index
+26. Businesses per Person, 2016
+27. Businesses per Person, 2009
+28. Percent Rent Burdened, 2015
+29. Percent Rent Burdened, 2010
+30. Percent Evangelical Protestant
+31. Percent Mainline Protestant
+32. Percent Black Protestant
+33. Percent Catholic
+34. Percent Jewish
+35. Percent Muslim
+26. Percent Mormon
