@@ -5,8 +5,8 @@ date: 2017-06-01
 categories: jekyll update
 ---
 
-I have long subscribed to the belief that the worst thing about Donald Trump isn't Donald Trump- it's that someone like him could get so many supporters.
-Despite my shock at the outcome of the 2016 election, I made peace with the fact that these voters made a conscious choice (however vile) to vote for Trump, regardless of whether or not they may have been influenced by a Russian propaganda machine.
+I have long subscribed to the belief that the worst thing about Donald Trump isn't Donald Trump- it's that he has so many supporters.
+Despite my shock at the outcome of the 2016 election, I accepted the fact that these voters made a conscious choice (however wrongheaded) when voting, regardless of whether or not they were influenced by a Russian propaganda machine.
 However, a handful of recent revelations imply that the Russians didn't just attempt to influence voters, but to manipulate voter registrations or even alter votes after they were cast.
 Is it possible that America voted against Trump, but the election was stolen?
 
@@ -17,121 +17,139 @@ Suspicion that Russia had gained access to our voting systems was given confirma
 
 I wondered whether it is possible to detect voting interference without having direct access to the voting machines or computer systems themselves. To find out, I started by putting ourselves in the mindset of Vladimir Putin, and thought about how I would have done it.
 ## So you want to hack an election
-I'm going to make one big assumption here- I will assume that the vote-hacking would have been confined to only a handful of swing states. After all, it doesn't make much sense to try to swing California or New York for Trump. Moreover, your risk of getting caught by an astute observer increases as you expand the number of targets. If I were Putin, I would have focused my efforts on states like Florida, North Carolina, Ohio, and Pennsylvania, which were the most prominent swing states this election. 
+I'm going to make one big assumption here- I will assume that the vote-hacking would have been confined to only a handful of places within swing states.
+After all, it doesn't make much sense to try to swing (for example) California for Trump- millions of votes would have to be changed and people would surely notice.
+Moreover, your risk of getting caught by an astute observer increases as you expand your number of targets.
+If I were Putin and wanted to hack election machines, I would have focused my efforts on states like Florida, North Carolina, Ohio, and Pennsylvania, which were the most prominent swing states this election. 
 
-Within each state, I would still want to only target a handful of places (to minimize risk of detection)- only this time it would make sense to attack only the big population centers.
-That's because within a state, the only thing that matters is the popular vote- so why waste your time on a small county? 
-Plus, this technique is more subtle: a few tens of thousands of votes changed one way or another might go unnoticed in Charlotte, but would be highly conspicuous in a small county. 
+Within each state, I would still have wanted to only target a handful of places (to minimize risk of detection)- specifically the big population centers.
+That's because within a state, the only thing that matters is the popular vote- so you'll get the best bang for your buck by hitting the most populous places. 
+In addition, focused hacking in a big county is harder to detect: a few tens of thousands of votes changed one way or another might go unnoticed in Charlotte, but would be highly conspicuous in a small county. 
 And a few tens of thousands of votes could be all you need to swing a state one way or another.
 
 Of course, this assumption could be wrong- perhaps Putin was more brazen than I'm guessing and he decided to swing for the fences (as the Bloomberg report suggests) and attack election systems nationwide.
 Or maybe his goal wasn't actually to swing the election one way or another, but simply to cause mass distrust of our democratic systems (in which case, the very existence of this blog post shows that he may have succeeded).
 So it's entirely possible he wouldn't have localized his vote tampering to a handful of places, and it would be more difficult (if not impossible) to detect in the way I'll describe here.
 
-Fortunately, it turns out that we can still learn some interesting things from this analysis whether the assumption is true or false.
+Fortunately, it turns out that we can still learn some interesting things from the analysis I'll present here whether my assumption is true or false.
 
-To recap: I'm making an educated guess that the places most likely to be a target for vote tampering are the handful of counties that contain large-ish cities, in swing states. But the question still remains- how would we know if the votes counts in those counties are valid or not? What we need is an accurate, county-by-county prediction of how each county is likely to vote, which can then be compared to the actual voting results. To do this, let's turn to machine learning.
+To recap: I'm making an educated guess that the places most likely to be a target for vote tampering are the handful of counties that contain large-ish cities, in swing states.
+But the question still remains- how would we know if the votes counts in those counties are valid or not?
+What we need is an accurate, county-by-county prediction of how each county is likely to vote, which can then be compared to the actual voting results.
+To do this, I turned to machine learning.
 
 ## Number crunching with neural nets
 Machine learning has been in the news a lot recently, with people buzzing about what so-called "deep learning" can do in fields like image classification and voice recognition (take, for example, the recent [Apple WWDC keynote](https://techpinions.com/the-overlooked-surprises-of-apples-wwdc-keynote/50282)).
-But for this analysis we don't need anything particularly fancy; a good old-fashioned neural net will do just fine (if you're new to machine learning, I recommend this [YouTube video](https://www.youtube.com/watch?v=bxe2T-V8XRs) to explain the basics of how a neural net works).
-For the inputs we will provide it with readily-available demographic information- things like median income, population density, and voting results from years past.
-And to train it, we can just use the actual results of the election.
+But for this analysis I don't need anything particularly fancy; a good old-fashioned neural net will do just fine (if you're new to machine learning, I recommend this [YouTube video](https://www.youtube.com/watch?v=bxe2T-V8XRs) to explain the basics of how a neural net works).
+For the inputs I provided it with publicly-available demographic information- things like median income, population density, and voting results from years past.
+To train it, I just used the actual results of the election (Figure 1, below).
 
-I downloaded a bunch of demographic data from the St. Louis Federal Reserve [website](http://geofred.stlouisfed.org/map/), which has a very convenient interface for getting county-level data.
-Finding county-level election results is a bit trickier, but luckily I found that GitHub user [tonmcg](https://github.com/tonmcg/County_Level_Election_Results_12-16) had already compiled the data into a nice spreadsheet.
+In the US, elections are generally administered by the county (or county equivalent)- so that's as granular as I decided to get.
+I began by downloading a bunch of demographic data from the St. Louis Federal Reserve [website](http://geofred.stlouisfed.org/map/), which has a nice interface for getting exactly this kind of county-level data.
+Data on religious affiliation was a bit more difficult to find- the best resource I found was the [Association of Religious Data Archives](http://www.thearda.com/Archive/Files/Descriptions/RCMSCY10.asp) which I downloaded as a Stata file.
+Finding county-level election results was also tricky, but luckily GitHub user [tonmcg](https://github.com/tonmcg/County_Level_Election_Results_12-16) had already compiled the data into a nice spreadsheet.
 All of the data that I used are available on the [GitHub page](http://github.com/christian-johnson/election-neural-net) for this project, under the folder [data_spreadsheets](https://github.com/christian-johnson/election-neural-net/tree/master/data_spreadsheets).
 
-A couple of quick notes about the data used here:
+A couple of quick notes about the data:
 
-1. There are 25 different data points on each county- the exact data points I used are listed at the end of this post. The most notable absence is religious affiliation, which wasn't available from the Federal Reserve site (if you know a good resource for where to find this information, feel free to drop me an email). This has a strong impact later in places like Utah, as we'll see. 
+1. There are 25 different data points on each county- the exact data points I used are listed at the end of this post. 
 
-2. For some reason, county-level voting returns are not available for Alaska, so this analysis is only applicable to the other 49 states. 
+2. As best I could tell, only precinct-level (not county-level) voting returns are available for Alaska, so I applied the analysis only to the other 49 states. 
 
-3. For a handful of counties in South Dakota (Perkins, Roberts, Pennington, and Sanborn), the data from the Federal Reserve seems to have wild inconsistencies between 2009 and 2010, with each experiencing dramatic jumps in population. Since this seems to be a problem with the data and not the analysis, I excluded these counties by hand as well. I contacted the Federal Reserve, and have been informed that they are looking into the issue.
+3. For a handful of counties in South Dakota (Perkins, Roberts, Pennington, and Sanborn), the data from the Federal Reserve seems to have wild inconsistencies between 2009 and 2010, with each experiencing dramatic jumps in population. Since this seems to be a problem with the data and not the analysis, I excluded these counties by hand. I contacted the Federal Reserve, and have been informed that they are looking into the issue.
 
-4. Polk County, TX had incorrect results in tonmcg's data- I replaced it with the data from the [Texas Secretary of State's data](http://elections.sos.state.tx.us/elchist319_race62.htm) instead. As far as I could tell, the rest of the results in Texas were consistent between the data sets to within a few votes.
+4. Polk County, TX had incorrect results in tonmcg's data- I replaced it with the data from the [Texas Secretary of State's data](http://elections.sos.state.tx.us/elchist319_race62.htm) instead. The rest of the results in Texas were consistent between the data sets to within a few votes.
 
 5. When running the neural net, I also excluded counties that are missing data points for one reason or another. This affects another handful of counties, but hopefully doesn't have too big an impact on the final results.
 
-6. Election results are somewhat complicated due to the presence of third-party candidates. I just ignored third parties, so everywhere I use a vote fraction, that's calculated as percentage of the two main vote shares. For example, the vote margin in Figure 1 below is found by: (GOP-DEM)/(GOP+DEM). Turnout is calculated as (GOP+DEM)/eligible voters.
+6. Election results are somewhat complicated due to the presence of third-party candidates. I ignored third parties, so vote fractions were calculated as percentage of the two main vote shares. For example, the vote margin in Figure 1 below is found by: (GOP-DEM)/(GOP+DEM). Turnout was calculated as (GOP+DEM)/(Eligible Voters).
 
 
 {% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/National_vote_fraction.jpg" description="Figure 1: 2016 US Presidential Election Results. The colors in the image are scaled such that a county that voted 50-50 would appear white, while counties that voted in favor of Trump or Hillary are colored in red or blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/National_vote_fraction.tiff?raw=true" %}
 
+Once all the data is loaded and formatted properly (made easy by the use of Pandas), I created a neural net using Google's TensorFlow framework.
+I found TensorFlow to be a bit more complicated than something like Scikit-learn, but also a bit more customizable.
+The neural net I used had 3 fully-connected hidden layers of 100 neurons, and I used tf.train.AdamOptimizer when training- this combination seemed to give reasonable results but I'm not a machine learning expert so there may be better choices available.
+With the same parameters and data, I found similar results using both TensorFlow and Scikit-learn. 
 
-Once all the data is loaded into a nice format (which takes a bit of work- that's the purpose of the function [load_data.py](https://github.com/christian-johnson/election-neural-net/blob/master/load_data.py)), we can create a neural net using a Python class called [MLPRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor) from the open-source package [Scikit-learn](http://scikit-learn.org/stable/index.html). This makes things very easy- the essential code is only a few lines:
+The usual paradigm in a machine-learning problem is to "train" your neural net on a particular set of data, and then use it to make predictions about a new set of data (the "test" set).
+Naively, then, you might think that we should use the 2012 election results as the "training" data and the 2016 results as the "test" data.
+Unfortunately this is not a good idea for the simple reason that the candidates in the 2016 election were very different from those in 2012- doing this will probably lead to crummy predictions.
+To give a concrete example of this- Mitt Romney was Mormon and had high support among Mormon voters, whereas Donald Trump spectacularly underperformed with Mormons.
 
-{% highlight python %}
-from sklearn.neural_network import MLPRegressor as mlp
-nn = mlp(verbose=True)
-nn.fit(training_inputs, training_outputs)
-results = nn.predict(test_inputs)
-{% endhighlight %}
-
-
-Here I've broken up the data into two pieces: "training" and "test".
-If I have a hunch that Florida's votes have been hacked, then the Florida counties are my "test" data, and the rest of the country is my "training" data.
-Then we can compare the output of the neural net to the real data and look for discrepancies.
-Of course, the proof is in the pudding- how well does it actually work?
+Instead, the method I employed for this analysis was in analogy with a "bump hunt" in particle physics- I treated the 2016 results in each state as a separate "test" set, and then stitched the results together at the end.
+This is a bit less kosher because there's not a perfect distinction between "test" and "training" data, but since we can't hold a do-over election it's pretty much the best that can be done.
+Of course, the proof is in the pudding- how well does the neural net actually work?
 
 ## Results
-The neural net turns out be pretty good- see, for example, the actual and predicted vote counts in Florida:
+The results turns out be pretty accurate- see, for example, the actual and predicted vote counts in Florida:
 
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/election_data_model_FL.jpg" description="Figure 2: Actual election results for Florida on the left, and the predicted results on the right. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/election_data_model_FL.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/FL_data_model.jpg" description="Figure 2: Actual election results for Florida on the left, and the predicted results on the right. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/FL_data_model.tiff?raw=true" %}
 
 
-On average, the neural net predicts a given county's vote to within 1-2% (it changes a little each time the neural net is trained due to how the minimization procedure works, so I run the fitting ten times and average the results).
-Now we can look at deviations in the data from the prediction (i.e. the residuals), and see if any counties have a large excess of Trump votes.
+On average, the RMS of the difference in the predicted vs actual data is about 2% (it changes a little each time the neural net is trained due to the stochastic nature of the minimization procedure).
 
-In Figure 3 I've plotted the residuals when I run the neural net treating each state as my "test" data and stitched the results together.
-It's important to note that Figure 3 shows only the residuals of _vote share_ - it isn't scaled by electoral vote impact.
-Therefore the fluctuations you see can be tricky to interpret on their own, because random fluctuations in small-population counties can appear pronounced, but be negligible in terms of the actual impact.
-What we might like is a measure of the _significance_ of a given deviation, in terms of significance on the Electoral College.
-Estimating this uncertainty and interpreting the results in this context will be the subject of a future blog post.
-
-
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/national_residmap.jpg" description="Figure 3: Deviations from the neural net model across the country. The colors are scaled such that a county that voted as expected is white, while counties that voted more than expected for Trump or Hillary are colored red and blue, respectively. As expected, counties in the West tend to exhibit stronger fluctuations due to their low population.  Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/national_residmap.tiff?raw=true" %}
-
-
-I want to emphasize that the model here is not a _prediction_ in the common sense of (for instance) "predicting the future".
+The residuals over the entire country (minus Alaska and problematic counties) are displayed in Figure 3.
+I want to emphasize again that the model here is not a _prediction_ in the common sense of (for instance) "predicting the future".
 We already know what happened in the election!
 What I'm doing is looking for _inconsistencies_ in the data, by assuming that any vote-meddling would have been confined to a handful of places.
-The neural learns what "should have" happened in each county by looking at the trends in the counties that are out-of-state.
-So it isn't surprising to see collective state-to-state differences in the residuals, because the counties in a given state were all treated as "test" data simultaneously. 
+You can think about the colored areas in Figure 3 as places where Clinton and Trump outperformed their expectation given the results in the rest of the country.
 
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/vote_residmap.jpg" description="Figure 3: Deviations from the neural net model across the country. The colors are scaled such that a county that voted as expected is white, while counties that voted more than expected for Trump or Hillary are colored red and blue, respectively. As expected, counties in the West tend to exhibit stronger fluctuations due to their low population. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/vote_residmap.tiff?raw=true" %}
+
+
+It isn't surprising to see collective state-to-state differences in the residuals, because the counties in a given state were all treated as "test" data simultaneously. 
 On the other hand, a large deviation in a given state is a sign that there might be something that wasn't taken into account.
-For instance, Utah and northern Arizona voted signficantly less for Trump than was expected- I suspect this is because those areas have high Mormon populations.
-You might also see Vermont and Arkansas are generally blue- my guess is this is because Bernie Sanders' endorsement of Hillary had a strong influence on his constituents in Vermont, and Hillary was viewed more favorably by some in Arkansas because of her time spent there as First Lady.
-Likewise, the New York metropolitan area (at least outside of the city) voted more strongly for Trump than expected, which perhaps has something to do with the fact that he is a native of that area.
+For instance, Arkansas is completely blue- my guess is this is because Clinton's time spent there as First Lady meant she was viewed more favorably than in similar states.
+Likewise, the New York metropolitan area (at least outside of the city) voted more strongly for Trump than expected, which perhaps has something to do with the fact that he is a native and resident of that area.
+
+Speculation aside, Figure 3 doesn't look to me like the signature of hacked votes.
+In fact, the swing states were predicted reasonably accurately, and there isn't an obvious pattern of high-population counties voting more strongly for Trump than expected.
+This becomes more clear when looking at the pattern of residuals versus vote share in Figure 4:
+
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/residuals_vs_vote.jpg" description="Figure 4: Residuals from the neural net prediction versus the vote share. Each circle represents a single county, and the size of the circle represents the population. If vote-hacking had taken place, my hypothesis is that there would be several large red circles in the upper left of the plot that would correspond to urban areas of swing states. The data shows a farirly smooth distribution with no clear signs of vote-hacking. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/residuals_vs_vote.tiff?raw=true" %}
+
+The hypothesis I made earlier (that vote hacking would have taken place mostly in large counties) means we would expect there to be several large counties in the upper left corner of the plot.
+As it is, the distribution of counties looks pretty much Gaussian to my eye. 
+The biggest outliers (the four medium-sized counties at around +7-11% residual and 40-60% GOP vote share) are all in New York or New Jersey, which is consistent with what we see in Figure 3.
+
+## What would vote-hacking look like?
+Although I don't see any obvious signs of wrongdoing, it isn't immediately obvious that this technique is actually sensitive enough to detect manipulated votes.
+To check whether or not vote-hacking would be easy to spot, I added 10,000 votes for Trump to three counties: Miami-Dade in Florida, Wayne in Michigan, and Cuyahoga in Ohio (which contain the cities Miami, Detroit, and Cleveland respectively).
+I re-ran the analysis on this new, altered data set, and the residuals are shown in Figure 5 below:
+
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_residmap.jpg" description="Figure 5: The same analysis as Figure 3, except with 10,000 added votes in Miami, Detroit, and Cleveland. Miami is a clear outlier, while Cleveland and Detroit are less obvious. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_residmap.tiff?raw=true" %}
+
+The results are interesting- Miami clearly shows up as an outlier but Detroit and Cleveland (although red) are not highlighted the same way.
+I suspect that training the neural net again would give slightly different results that might highlight these counties better or worse- but the point is that the neural net is at least moderately sensitive to vote-hacking.
+It is much more sensitive, for instance, than using the change from 2012 as the model:
+
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_change.jpg" description="Figure 6: The same analysis as Figure 5, except using the votes from 2012 as the model, instead of the neural net prediction. The extra 10,000 votes in three counties are peanuts compared with the large changes that are present across the entire map. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_change.tiff?raw=true" %}
+
+Conclusion: using a neural net to look for vote-hacking isn't perfect, but it's not terrible either.
 
 ## What if vote machines weren't hacked, but voter registrations were?
 So far, I've only looked at half the story- what if no votes were changed, but voter registrations were tampered with?
 If enough people were prevented from voting in the right areas, that would be enough to change the results, while remaining invisible to the analysis presented above. 
-To investigate this, I ran the neural net again, but this time I looked at voting turnout, which I calculated as the number of votes, divided by the number of people aged 18+.
+I ran the neural net again, but this time looking at voting turnout, which was calculated as the number of votes divided by the number of people aged 18+.
 This isn't a perfect definition because there are some groups (e.g. convicted felons) who might be unable to vote despite being over the age of 18- my guess is those groups make up a small fraction of the population.
 
 The voting turnout nationwide looks like this:
 
-
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.jpg" description="Figure 4: Voter turnout. Turnout doesn't vary as much county-to-county as does political leaning, but there are still some trends that you can identify. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.jpg" description="Figure 7: Voter turnout. Turnout doesn't vary as much county-to-county as political leaning, but there are still some trends that you can identify. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.tiff?raw=true" %}
 
 
 Again, we can predict the turnout in the same state-by-state manner as we predicted the vote share, and the residuals are plotted below:
 
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.jpg" description="Figure 5: National voter turnout residuals. The color is scaled such that counties that had a lower turnout than expected are brown/orange, while higher-than-expected turnout is colored in purple (Not using the red-blue color scheme here because turnout doesn't necessarily correlate with political party). Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.jpg" description="Figure 8: National voter turnout residuals. The color is scaled such that counties that had a lower turnout than expected are brown/orange, while higher-than-expected turnout is colored in purple (I'm not using the red-blue color scheme here because turnout doesn't necessarily correlate with political party). Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.tiff?raw=true" %}
 
+Again, this doesn't look to me like a pattern of interference, where we might have expected a couple of counties in Ohio or Florida to show up bright orange.
+There are a handful of outlier counties, but they aren't located in swing states (which in general are predicted pretty well).
 
-The results show a couple things that make sense in hindsight- for starters, it appears that a lot of Mormons in Utah decided to sit the election out rather than vote for someone they didn't like. 
-Swing states like Florida, North Carolina, Maine, and Colorado had unexpectedly high turnouts, while safe states like New York, Tennessee, and West Virginia had a bit less turnout than expected.
-
-Importantly, it doesn't look to me like a pattern of interference, where we might have expected a couple of counties in Ohio or Florida to show up bright orange.
-In fact, the county with the most significant deficit in voting turnout in Ohio is Holmes county, which turns out to have a very large Amish population (which I'm guessing doesn't vote as at high a rate as the non-Amish).
-The biggest trends I see are more gradual, which probably reflects things that aren't taken into account when building the neural net.
-If you'd like to add some data series or adjust the fitting procedure, the code is all on my GitHub (so go nuts!).
-I'll keep playing around with this data and add blog posts whenever I find something interesting.
+If you'd like to edit the data series used or adjust the fitting procedure, the code is all on my GitHub (so go nuts!).
+I'm going to keep playing around with this data and add blog posts whenever I find something interesting.
 Until then, we know that if the Russians did alter the results of the election, they were at least somewhat subtle about it.
 
 ## TL;DR: [Betteridges Law of Headlines](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines)
