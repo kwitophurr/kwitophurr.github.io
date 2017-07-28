@@ -1,41 +1,41 @@
 ---
 layout: post
 title: "Were Votes in the 2016 Election Hacked?"
-date: 2017-06-01
+date: 2017-07-27
 categories: jekyll update
 ---
 
-I have long subscribed to the belief that the worst thing about Donald Trump isn't Donald Trump- it's that he has so many supporters.
-Despite my shock at the outcome of the 2016 election, I accepted the fact that these voters made a conscious choice (however wrongheaded) when voting, regardless of whether or not they were influenced by a Russian propaganda machine.
-However, a handful of recent revelations imply that the Russians didn't just attempt to influence voters, but to manipulate voter registrations or even alter votes after they were cast.
+I'm a strong believer that the worst thing about Donald Trump isn't Donald Trump- it's that he has so many supporters. 
+Even if the wildest accusations about the Trump/Russia affair are true (and that's a big if), nothing changes the fact that tens of millions of Americans consciously decided that he was their best choice for President.
+
+However, some recent revelations have implied that the Russian effort to meddle in our election went beyond propaganda and social media manipulation, and may have involved tampering with the actual votes cast.
 Is it possible that America voted against Trump, but the election was stolen?
 
 My interest in this subject was piqued on June 6, when NSA contractor [Reality Winner](https://www.theatlantic.com/news/archive/2017/06/who-is-reality-winner/529266/) was arrested on suspicion of leaking a top-secret document to The Intercept.
-The document [alleges](https://theintercept.com/2017/06/05/top-secret-nsa-report-details-russian-hacking-effort-days-before-2016-election/) that Russia attempted to spear-phish up to 100 local election officials in up to seven states, with the intention of gaining access to their computer systems.
+The document [alleges](https://theintercept.com/2017/06/05/top-secret-nsa-report-details-russian-hacking-effort-days-before-2016-election/) that Russia attempted to spear-phish up to 100 local election officials in seven states, with the intention of gaining access to their computer systems.
 A week later, [Bloomberg](https://www.bloomberg.com/news/articles/2017-06-13/russian-breach-of-39-states-threatens-future-u-s-elections) reported that Russian hackers had attacked electronic voting infrastructure in up to 39 states.
 Suspicion that Russia had gained access to our voting systems was given confirmation with the [announcement](http://time.com/4828306/russian-hacking-election-widespread-private-data/) that voting systems in Illinois had been compromised to at least a partial extent.
 
 I wondered whether it is possible to detect voting interference without having direct access to the voting machines or computer systems themselves. To find out, I started by putting ourselves in the mindset of Vladimir Putin, and thought about how I would have done it.
 ## So you want to hack an election
 I'm going to make one big assumption here- I will assume that the vote-hacking would have been confined to only a handful of places within swing states.
-After all, it doesn't make much sense to try to swing (for example) California for Trump- millions of votes would have to be changed and people would surely notice.
-Moreover, your risk of getting caught by an astute observer increases as you expand your number of targets.
-If I were Putin and wanted to hack election machines, I would have focused my efforts on states like Florida, North Carolina, Ohio, and Pennsylvania, which were the most prominent swing states this election. 
+After all, it doesn't make much sense to try to swing (ha!) California for Trump- millions of votes would have to be changed and people would surely notice.
+Moreover, your risk of getting caught by an observer increases as you expand your number of targets.
+If I were Putin and wanted to directly hack the election, I would have focused my efforts on states like Florida, North Carolina, Ohio, and Pennsylvania, which were the most prominent swing states this election. 
 
-Within each state, I would still have wanted to only target a handful of places (to minimize risk of detection)- specifically the big population centers.
-That's because within a state, the only thing that matters is the popular vote- so you'll get the best bang for your buck by hitting the most populous places. 
-In addition, focused hacking in a big county is harder to detect: a few tens of thousands of votes changed one way or another might go unnoticed in Charlotte, but would be highly conspicuous in a small county. 
+Within each state, I would still want to target only a handful of places (to minimize risk of detection)- specifically the big population centers.
+That's because within a state, the only thing that matters is the popular vote- and it's a lot harder to notice ten thousand changed votes if they're located in a county where a quarter million people vote, compared to one in which there are only twenty thousand voters.
 And a few tens of thousands of votes could be all you need to swing a state one way or another.
 
 Of course, this assumption could be wrong- perhaps Putin was more brazen than I'm guessing and he decided to swing for the fences (as the Bloomberg report suggests) and attack election systems nationwide.
-Or maybe his goal wasn't actually to swing the election one way or another, but simply to cause mass distrust of our democratic systems (in which case, the very existence of this blog post shows that he may have succeeded).
-So it's entirely possible he wouldn't have localized his vote tampering to a handful of places, and it would be more difficult (if not impossible) to detect in the way I'll describe here.
+Or maybe his goal wasn't actually to swing the election one way or another, but simply to cause mass distrust of our democratic systems (in which case, why not hack as many places as possible).
+So it's entirely possible he wouldn't have localized his vote tampering to a handful of places, and it would be more difficult to detect in the way I'll describe here.
 
-Fortunately, it turns out that we can still learn some interesting things from the analysis I'll present here whether my assumption is true or false.
+Fortunately, it turns out that we can still learn some interesting things from this analysis whether my big assumption is true or false.
 
 To recap: I'm making an educated guess that the places most likely to be a target for vote tampering are the handful of counties that contain large-ish cities, in swing states.
-But the question still remains- how would we know if the votes counts in those counties are valid or not?
-What we need is an accurate, county-by-county prediction of how each county is likely to vote, which can then be compared to the actual voting results.
+How would we know if the votes counts in those counties are valid or not?
+What we need is an accurate prediction of how each county is likely to vote, which can then be compared to the actual voting results.
 To do this, I turned to machine learning.
 
 ## Number crunching with neural nets
@@ -52,7 +52,7 @@ All of the data that I used are available on the [GitHub page](http://github.com
 
 A couple of quick notes about the data:
 
-1. There are 36 different data points on each county- the exact data points I used are listed at the end of this post. 
+1. There are 36 different data points on each county- the exact data points I used are listed in the Appendix at the end of this post. 
 
 2. As best I could tell, only precinct-level (not county-level) voting returns are available for Alaska, so I applied the analysis only to the other 49 states. 
 
@@ -62,22 +62,22 @@ A couple of quick notes about the data:
 
 5. When running the neural net, I also excluded counties that are missing data points for one reason or another. This affects another handful of counties, but hopefully doesn't have too big an impact on the final results.
 
-6. Election results are somewhat complicated due to the presence of third-party candidates. I ignored third parties, so vote fractions were calculated as percentage of the two main vote shares. For example, the vote margin in Figure 1 below is found by: (GOP-DEM)/(GOP+DEM). Turnout was calculated as (GOP+DEM)/(Eligible Voters).
+6. Election results are somewhat complicated due to the presence of third-party candidates. I ignored third parties, so vote fractions were calculated as percentage of the two main vote shares. For example, the vote margin in Figure 1 below is found by: (GOP)/(GOP+DEM). Turnout was calculated as (GOP+DEM)/(Eligible Voters).
 
 
 {% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/National_vote_fraction.jpg" description="Figure 1: 2016 US Presidential Election Results. The colors in the image are scaled such that a county that voted 50-50 would appear white, while counties that voted in favor of Trump or Hillary are colored in red or blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/National_vote_fraction.tiff?raw=true" %}
 
-Once all the data is loaded and formatted properly (made easy by the use of Pandas), I created a neural net using Google's TensorFlow framework.
-I found TensorFlow to be a bit more complicated than something like Scikit-learn, but also a bit more customizable.
-The neural net I used had 3 fully-connected hidden layers of 100 neurons, and I used tf.train.AdamOptimizer when training- this combination seemed to give reasonable results but I'm not a machine learning expert so there may be better choices available.
+Once all the data is loaded and formatted properly, I created a neural net using Google's [TensorFlow](https://www.tensorflow.org/) framework.
+I found TensorFlow to be a bit more complicated than something like [Scikit-learn](http://scikit-learn.org/stable/index.html), but also a bit more customizable (albeit slower).
+The neural net I used had 3 fully-connected hidden layers of 100 neurons, and I used an [Adam Optimizer](https://arxiv.org/abs/1412.6980) when training- this combination seemed to give reasonable results but I'm not a machine learning expert so there may be better choices available.
 With the same parameters and data, I found similar results using both TensorFlow and Scikit-learn. 
 
 The usual paradigm in a machine-learning problem is to "train" your neural net on a particular set of data, and then use it to make predictions about a new set of data (the "test" set).
 Naively, then, you might think that we should use the 2012 election results as the "training" data and the 2016 results as the "test" data.
-Unfortunately this is not a good idea for the simple reason that the candidates in the 2016 election were very different from those in 2012- doing this will probably lead to crummy predictions.
-To give a concrete example of this- Mitt Romney was Mormon and had high support among Mormon voters, whereas Donald Trump spectacularly underperformed with Mormons.
+Unfortunately this is not a good idea for the simple reason that the candidates in the 2016 election were very different from those in 2012- doing this leads to crummy predictions.
+As a concrete example of the differences between 2012 and 2016: Mitt Romney was Mormon and had high support among Mormon voters, whereas Donald Trump spectacularly underperformed with Mormons (just look at Utah in Figure 6, below).
 
-Instead, the method I employed for this analysis was in analogy with a "bump hunt" in particle physics- I treated the 2016 results in each state as a separate "test" set, and then stitched the results together at the end.
+Instead, the method I employed for this analysis was to treat the 2016 results in each state as a separate "test" set, and then stitched the results together at the end (for the physicists reading, this is very much in analogy with a bump hunt).
 This is a bit less kosher because there's not a perfect distinction between "test" and "training" data, but since we can't hold a do-over election it's pretty much the best that can be done.
 Of course, the proof is in the pudding- how well does the neural net actually work?
 
@@ -96,7 +96,7 @@ We already know what happened in the election!
 What I'm doing is looking for _inconsistencies_ in the data, by assuming that any vote-meddling would have been confined to a handful of places.
 You can think about the colored areas in Figure 3 as places where Clinton and Trump outperformed their expectation given the results in the rest of the country.
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/vote_residmap.jpg" description="Figure 3: Deviations from the neural net model across the country. The colors are scaled such that a county that voted as expected is white, while counties that voted more than expected for Trump or Hillary are colored red and blue, respectively. As expected, counties in the West tend to exhibit stronger fluctuations due to their low population. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/vote_residmap.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/vote_residmap.jpg" description="Figure 3: Deviations from the neural net model across the country. The colors are scaled such that a county that voted as expected is white, while counties that voted more than expected for Trump or Hillary are colored red and blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/vote_residmap.tiff?raw=true" %}
 
 
 It isn't surprising to see collective state-to-state differences in the residuals, because the counties in a given state were all treated as "test" data simultaneously. 
@@ -121,17 +121,19 @@ I re-ran the analysis on this new, altered data set, and the residuals are shown
 
 {% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_residmap.jpg" description="Figure 5: The same analysis as Figure 3, except with 10,000 added votes in Miami, Detroit, and Cleveland. Miami is a clear outlier, while Cleveland and Detroit are less obvious. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_residmap.tiff?raw=true" %}
 
-The results are interesting- Miami clearly shows up as an outlier but Detroit and Cleveland (although red) are not highlighted the same way.
+The results are interesting- Miami clearly shows up as an outlier but Detroit and Cleveland (although red) are not highlighted as strongly.
 I suspect that training the neural net again would give slightly different results that might highlight these counties better or worse- but the point is that the neural net is at least moderately sensitive to vote-hacking.
 It is much more sensitive, for instance, than using the change from 2012 as the model:
 
 {% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_change.jpg" description="Figure 6: The same analysis as Figure 5, except using the votes from 2012 as the model, instead of the neural net prediction. The extra 10,000 votes in three counties are peanuts compared with the large changes that are present across the entire map. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_change.tiff?raw=true" %}
 
+The extra votes are completely invisible in Figure 6 because they are overwhelmed by the overall changes from 2012 to 2016.
 Conclusion: using a neural net to look for vote-hacking isn't perfect, but it's not terrible either.
 
 ## What if vote machines weren't hacked, but voter registrations were?
 So far, I've only looked at half the story- what if no votes were changed, but voter registrations were tampered with?
-If enough people were prevented from voting in the right areas, that would be enough to change the results, while remaining invisible to the analysis presented above. 
+If enough people were prevented from voting in the right areas (by deleting their voter registration, for instance), that would be enough to change the results, while remaining invisible to the analysis presented above. 
+
 I ran the neural net again, but this time looking at voting turnout, which was calculated as the number of votes divided by the number of people aged 18+.
 This isn't a perfect definition because there are some groups (e.g. convicted felons) who might be unable to vote despite being over the age of 18- my guess is those groups make up a small fraction of the population.
 

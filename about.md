@@ -14,17 +14,17 @@ This site is hosted by GitHub Pages, and built using Jekyll. The Jekyll template
 
 
 ### Get in touch
-<table width="50%" height="100%" border="0" align="center">
-
+<table width="70%" height="100%" border="0" align="center">
 	<tr>
 		<td>
 			<a href="mailto:arcjohns@ucsc.edu"><img src="{{ "/img/mail_logo.svg" | prepend: site.baseurl | replace: '//', '/' }}" alt="Email" style="max-height: 80px; max-width: 80px;"></a>
 		</td>
 		<td>
-			<a href="https://github.com/christian-johnson"><img src="{{ "/img/github_logo.png" | prepend: site.baseurl | replace: '//', '/' }}" alt="GitHub" style="max-height: 60px; max-width: 60px;"></a>
+			<a href="https://twitter.com/cjxc"><img src="{{ "/img/twitter_logo.svg" | prepend: site.baseurl | replace: '//', '/' }}" alt="Twitter" height='80' width='80' style="max-height: 80px; max-width: 80px;"></a>
 		</td>
 		<td>
-			<a href="https://twitter.com/cjxc"><img src="{{ "/img/twitter_logo.svg" | prepend: site.baseurl | replace: '//', '/' }}" alt="Twitter" style="max-height: 80px; max-width: 80px;"></a>
+			<a href="https://github.com/christian-johnson"><img src="{{ "/img/github_logo.png" | prepend: site.baseurl | replace: '//', '/' }}" alt="GitHub" style="max-height: 60px; max-width: 60px;"></a>
+			
 		</td>
 	</tr>
 </table>
