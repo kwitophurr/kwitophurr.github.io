@@ -65,7 +65,7 @@ A couple of quick notes about the data:
 6. Election results are somewhat complicated due to the presence of third-party candidates. I ignored third parties, so vote fractions were calculated as percentage of the two main vote shares. For example, the vote margin in Figure 1 below is found by: (GOP)/(GOP+DEM). Turnout was calculated as (GOP+DEM)/(Eligible Voters).
 
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/National_vote_fraction.jpg" description="Figure 1: 2016 US Presidential Election Results. The colors in the image are scaled such that a county that voted 50-50 would appear white, while counties that voted in favor of Trump or Hillary are colored in red or blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/National_vote_fraction.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/National_vote_fraction.jpg" description="Figure 1: 2016 US Presidential Election Results. The colors in the image are scaled such that a county that voted 50-50 would appear white, while counties that voted in favor of Trump or Hillary are colored in red or blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/National_vote_fraction.tiff?raw=true" %}
 
 Once all the data is loaded and formatted properly, I created a neural net using Google's [TensorFlow](https://www.tensorflow.org/) framework.
 I found TensorFlow to be a bit more complicated than something like [Scikit-learn](http://scikit-learn.org/stable/index.html), but also a bit more customizable (albeit slower).
@@ -85,7 +85,7 @@ Of course, the proof is in the pudding- how well does the neural net actually wo
 The results turns out be pretty accurate- see, for example, the actual and predicted vote counts in Florida:
 
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/FL_data_model.jpg" description="Figure 2: Actual election results for Florida on the left, and the predicted results on the right. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/FL_data_model.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/FL_data_model.jpg" description="Figure 2: Actual election results for Florida on the left, and the predicted results on the right. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/FL_data_model.tiff?raw=true" %}
 
 
 On average, the RMS of the difference in the predicted vs actual data is about 2% (it changes a little each time the neural net is trained due to the stochastic nature of the minimization procedure).
@@ -96,7 +96,7 @@ We already know what happened in the election!
 What I'm doing is looking for _inconsistencies_ in the data, by assuming that any vote-meddling would have been confined to a handful of places.
 You can think about the colored areas in Figure 3 as places where Clinton and Trump outperformed their expectation given the results in the rest of the country.
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/vote_residmap.jpg" description="Figure 3: Deviations from the neural net model across the country. The colors are scaled such that a county that voted as expected is white, while counties that voted more than expected for Trump or Hillary are colored red and blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/vote_residmap.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/vote_residmap.jpg" description="Figure 3: Deviations from the neural net model across the country. The colors are scaled such that a county that voted as expected is white, while counties that voted more than expected for Trump or Hillary are colored red and blue, respectively. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/vote_residmap.tiff?raw=true" %}
 
 
 It isn't surprising to see collective state-to-state differences in the residuals, because the counties in a given state were all treated as "test" data simultaneously. 
@@ -108,7 +108,7 @@ Speculation aside, Figure 3 doesn't look to me like the signature of hacked vote
 In fact, the swing states were predicted reasonably accurately, and there isn't an obvious pattern of high-population counties voting more strongly for Trump than expected.
 This becomes more clear when looking at the pattern of residuals versus vote share in Figure 4:
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/residual_vs_vote.jpg" description="Figure 4: Residuals from the neural net prediction versus the vote share. Each circle represents a single county, and the size of the circle represents the population. If vote-hacking had taken place, my hypothesis is that there would be several large red circles in the upper left of the plot that would correspond to urban areas of swing states. The data shows a farirly smooth distribution with no clear signs of vote-hacking. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/residual_vs_vote.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/residual_vs_vote.jpg" description="Figure 4: Residuals from the neural net prediction versus the vote share. Each circle represents a single county, and the size of the circle represents the population. If vote-hacking had taken place, my hypothesis is that there would be several large red circles in the upper left of the plot that would correspond to urban areas of swing states. The data shows a farirly smooth distribution with no clear signs of vote-hacking. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/residual_vs_vote.tiff?raw=true" %}
 
 The hypothesis I made earlier (that vote hacking would have taken place mostly in large counties) means we would expect there to be several large counties in the upper left corner of the plot.
 As it is, the distribution of counties looks pretty much Gaussian to my eye. 
@@ -119,13 +119,13 @@ Although I don't see any obvious signs of wrongdoing, it isn't immediately obvio
 To check whether or not vote-hacking would be easy to spot, I added 10,000 votes for Trump to three counties: Miami-Dade in Florida, Wayne in Michigan, and Cuyahoga in Ohio (which contain the cities Miami, Detroit, and Cleveland respectively).
 I re-ran the analysis on this new, altered data set, and the residuals are shown in Figure 5 below:
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_residmap.jpg" description="Figure 5: The same analysis as Figure 3, except with 10,000 added votes in Miami, Detroit, and Cleveland. Miami is a clear outlier, while Cleveland and Detroit are less obvious. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_residmap.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/injected_vote_residmap.jpg" description="Figure 5: The same analysis as Figure 3, except with 10,000 added votes in Miami, Detroit, and Cleveland. Miami is a clear outlier, while Cleveland and Detroit are less obvious. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/injected_vote_residmap.tiff?raw=true" %}
 
 The results are interesting- Miami clearly shows up as an outlier but Detroit and Cleveland (although red) are not highlighted as strongly.
 I suspect that training the neural net again would give slightly different results that might highlight these counties better or worse- but the point is that the neural net is at least moderately sensitive to vote-hacking.
 It is much more sensitive, for instance, than using the change from 2012 as the model:
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_change.jpg" description="Figure 6: The same analysis as Figure 5, except using the votes from 2012 as the model, instead of the neural net prediction. The extra 10,000 votes in three counties are peanuts compared with the large changes that are present across the entire map. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/injected_vote_change.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/injected_vote_change.jpg" description="Figure 6: The same analysis as Figure 5, except using the votes from 2012 as the model, instead of the neural net prediction. The extra 10,000 votes in three counties are peanuts compared with the large changes that are present across the entire map. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/injected_vote_change.tiff?raw=true" %}
 
 The extra votes are completely invisible in Figure 6 because they are overwhelmed by the overall changes from 2012 to 2016.
 Conclusion: using a neural net to look for vote-hacking isn't perfect, but it's not terrible either.
@@ -139,13 +139,13 @@ This isn't a perfect definition because there are some groups (e.g. convicted fe
 
 The voting turnout nationwide looks like this:
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.jpg" description="Figure 7: Voter turnout. Turnout doesn't vary as much county-to-county as political leaning, but there are still some trends that you can identify. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/national_turnout.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/national_turnout.jpg" description="Figure 7: Voter turnout. Turnout doesn't vary as much county-to-county as political leaning, but there are still some trends that you can identify. Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/national_turnout.tiff?raw=true" %}
 
 
 Again, we can predict the turnout in the same state-by-state manner as we predicted the vote share, and the residuals are plotted below:
 
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.jpg" description="Figure 8: National voter turnout residuals. The color is scaled such that counties that had a lower turnout than expected are brown/orange, while higher-than-expected turnout is colored in purple (I'm not using the red-blue color scheme here because turnout doesn't necessarily correlate with political party). Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/turnout_residmap.tiff?raw=true" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/turnout_residmap.jpg" description="Figure 8: National voter turnout residuals. The color is scaled such that counties that had a lower turnout than expected are brown/orange, while higher-than-expected turnout is colored in purple (I'm not using the red-blue color scheme here because turnout doesn't necessarily correlate with political party). Click on the image to download a high-resolution version." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-07-28-Election-Neural-Net/turnout_residmap.tiff?raw=true" %}
 
 Again, this doesn't look to me like a pattern of interference, where we might have expected a couple of counties in Ohio or Florida to show up bright orange.
 There are a handful of outlier counties, but they aren't located in swing states (which in general are predicted pretty well).
