@@ -16,11 +16,10 @@ Yes! I have played Ultimate for [Revolver](http://www.revolverultimate.com/) sin
 The logo at the top of this page is a stylized version of the [Eightfold Way](https://en.wikipedia.org/wiki/Eightfold_Way_(physics)), which was one of the clues that protons and neutrons are composite particles, made of smaller particles that we call quarks. The Python code to generate the image is available [here](https://github.com/christian-johnson/christian-johnson.github.io/blob/master/logo.py) if you'd like to make something similar.
 
 ### How can I be updated when new blog posts come out?
-My RSS feed is [here](http://christian-johnson.github.io/atom.xml), just add that link to your feed aggregator of choice!
+My RSS feed is [here](http://christian-johnson.github.io/atom.xml), just add that link to the feed aggregator of choice!
 
 ### This site is amazing- how did you build it?
 This site is hosted by GitHub Pages, and built using Jekyll. The Jekyll template I used is available on [Github](https://github.com/KingFelix/emerald/archive/master.zip).
-
 
 ### How can I get in touch with you?
 <table width="70%" height="100%" border="0" align="center">
@@ -38,7 +37,6 @@ This site is hosted by GitHub Pages, and built using Jekyll. The Jekyll template
 	</tr>
 </table>
 
-<br>
 ### Can you show me boring licensing information?
 The contents of my GitHub are released under the <a href="/MIT_License.txt">MIT License</a>. 
 The email icon above is made by <a href="http://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> and is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
