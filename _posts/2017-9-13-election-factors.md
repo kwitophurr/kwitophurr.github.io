@@ -39,7 +39,7 @@ The question I want to ask here is what the machine learning techniques I've des
 
 Let's start by looking at the simple [correlations](https://en.wikipedia.org/wiki/Correlation_and_dependence) between each demographic variable and the GOP vote share:
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-9-13-election-factors/GOP_Correlations.png" description="Figure 2: Table of most highly and negatively correlated demographic data to the GOP vote share in the 2016 election. Unfortunately Markdown doesn't have a nice table format as far as I can tell, so if you'd like to get all the values without copying them by hand from the image, I'm afraid you'll have to use the code on my GitHub. Click on the image to download." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-9-13-election-factors/GOP_Correlations.png" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-9-13-election-factors/GOP_Correlations.png" description="Figure 3: Table of most highly and negatively correlated demographic data to the GOP vote share in the 2016 election. Unfortunately Markdown doesn't have a nice table format as far as I can tell, so if you'd like to get all the values without copying them by hand from the image, I'm afraid you'll have to use the code on my GitHub. Click on the image to download." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-9-13-election-factors/GOP_Correlations.png" %}
 
 It should come as no surprise that the variable most strongly correlated with the outcome of the 2016 election is the results of the 2012 election (obviously the 2016 election is perfectly correlated with itself, hence the 1.000 in the first row on the left). 
 Americans tend to view their political party much like their favorite sports team, and are often loath to change affiliation.
@@ -53,11 +53,11 @@ Of course, correlation [does not always imply](https://www.xkcd.com/552/) causat
 It might be tempting to look at this data and claim that the __racial__ theory of Trump's rise is correct, but the fact that you can predict the Trump vote to a ~93% extent just by looking at Mitt Romney's performance means that we are probably missing the factors that are unique to Trump himself.
 Let's repeat this exercise, but look at the correlations between the demographics and the *change* in the GOP vote (i.e. Figure 1 above):
 
-{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-9-13-election-factors/GOP_Change_correlations.png" description="Figure 3: Table of most highly and negatively correlated demographic data to the GOP vote change between the 2012 and 2016 elections. Many of the most strongly correlated parameters are the same as in Figure 2, but there are a few differences. Click on the image to download." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-9-13-election-factors/GOP_Change_correlations.png" %}
+{% include image.html url="https://christian-johnson.github.io/election-neural-net/plots/2017-9-13-election-factors/GOP_Change_correlations.png" description="Figure 4: Table of most highly and negatively correlated demographic data to the GOP vote change between the 2012 and 2016 elections. Many of the most strongly correlated parameters are the same as in Figure 2, but there are a few differences. Click on the image to download." highres="https://christian-johnson.github.io/election-neural-net/plots/2017-9-13-election-factors/GOP_Change_correlations.png" %}
 
 Alright, so in this case it looks like correlation does imply causation. 
 We see that Trump's support (normalized to Mitt Romney's) is still heavily predicted by the white vote, especially the older, affluent, religious white vote.
-In other words, Trump didnt necessarily grow the Republican party so much as he consolidated its grip on folks who generally lean Republican anyways.
+In other words, Trump didn't necessarily grow the Republican party so much as he consolidated its grip on folks who generally lean Republican anyways.
 
 The slightly more interesting effects are on the opposite end of the spectrum- what was it about Trump that made voters shy away from him?
 I see a couple of things here: Trump managed to offend Mormons (as we've seen before) and Hispanics (with his outright racism and xenophobia).
