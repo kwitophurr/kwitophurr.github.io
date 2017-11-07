@@ -59,7 +59,7 @@ This seemed to give reasonable results in line with what my expectations were- a
 The end result is this:
 {% include image.html url="https://raw.githubusercontent.com/christian-johnson/cuba-sonic-weapon/master/loudness.png" description="Figure 1: Two maps of the same area showing how much energy is contained in the sound emitted by five speakers. The five speakers are arranged around a semicircle with radius 100 meters, and are aimed at the center. Each speaker emits a different frequency near 100 kHz. The left image shows the total energy in sound waves over all frequencies, while the right image shows only the energy of sound below 20 kHz. As you can see, the energy of the sound travels 'invisibly' to the target and is localized to a region around 35 x 35 meters in size. Click to download the image." highres="https://raw.githubusercontent.com/christian-johnson/cuba-sonic-weapon/master/loudness.png" %}
 
-The sound produced by this weapon at the center of the image can be heard by downloading [this WAV file](https://github.com/christian-johnson/cuba-sonic-weapon/blob/master/output.wav?raw=true) (a 5 second sample).
+The sound produced by this weapon at the center of the image can be heard by downloading [this WAV file](https://github.com/christian-johnson/cuba-sonic-weapon/blob/master/output.wav?raw=true) (a 5 second sample). *Edit: if you like, you can also view [this YouTube video](https://www.youtube.com/watch?v=b8ivvVteT6Y) which plays the sound.*
 Fair warning- it is not a particularly pleasant sound (this is supposed to be a sonic weapon after all) so make sure your volume is set low the first time you listen.
 I made the mistake of listening at full volume with my headphones on and would not recommend it.
 
