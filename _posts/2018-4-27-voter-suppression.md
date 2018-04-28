@@ -5,9 +5,7 @@ date: 2018-4-27
 categories: jekyll update
 ---
 
-One of the more insidious efforts to
-is the implementation of strict voter ID laws.
-As has been documented time and again, in-person voter fraud is a virtually nonexistent problem in American elections (I've even covered the implausibility previously on this blog).
+As has been documented time and again, in-person voter fraud is a virtually nonexistent problem in American elections (I've even covered the (implausibility)[https://christian-johnson.github.io/alabama] previously on this blog).
 But unlike scientists, our elected officials have rarely felt the need to consult such mundane sources as evidence when making decisions.
 
 The open secret, of course, is that voter ID laws are designed to suppress turnout among the voter base- especially poor and minority voters who may not have the necessary IDs.
