@@ -38,7 +38,7 @@ This site is hosted by GitHub Pages, and built using Jekyll. The Jekyll template
 </table>
 
 ### I'm an employer, and you seem like just the person for my company! Do you have a resume?
-Thanks for your interest! Sounds like you might want to visit my [LinkedIn](www.linkedin.com/in/christian-johnson-47538588) page.
+Thanks for your interest! Sounds like you might want to visit my [LinkedIn](http://www.linkedin.com/in/christian-johnson-47538588) page.
 
 ### Can you show me boring licensing information?
 The contents of my GitHub are released under the <a href="/MIT_License.txt">MIT License</a>.
